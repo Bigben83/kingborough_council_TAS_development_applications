@@ -66,6 +66,7 @@ doc.css('#list tbody tr').each do |row|
   date_received = row.css('td')[2].text.strip
   on_notice_to = row.css('td')[3].text.strip
   description = row.css('td')[4].text.strip
+  document_description = row.css('td a').map { |link| link['href'] }.join(", ")
 
   date_scraped = Date.today.to_s
 
@@ -81,8 +82,8 @@ doc.css('#list tbody tr').each do |row|
 
   if existing_entry.empty? # Only insert if the entry doesn't already exist
   # Step 5: Insert the data into the database
-  db.execute("INSERT INTO kingborough (council_reference, address, description, date_received, on_notice_to, date_scraped) VALUES (?, ?, ?, ?, ?, ?)",
-             [council_reference, address, description, date_received, on_notice_to, date_scraped])
+  db.execute("INSERT INTO kingborough (council_reference, address, description, document_description date_received, on_notice_to, date_scraped) VALUES (?, ?, ?, ?, ?, ?, ?)",
+             [council_reference, address, description, document_description, date_received, on_notice_to, date_scraped])
 
   logger.info("Data for #{council_reference} saved to database.")
     else
