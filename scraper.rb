@@ -82,7 +82,7 @@ doc.css('#list tbody tr').each do |row|
 
   if existing_entry.empty? # Only insert if the entry doesn't already exist
   # Step 5: Insert the data into the database
-  db.execute("INSERT INTO kingborough (council_reference, address, description, document_description date_received, on_notice_to, date_scraped) VALUES (?, ?, ?, ?, ?, ?, ?)",
+  db.execute("INSERT INTO kingborough (council_reference, address, description, document_description, date_received, on_notice_to, date_scraped) VALUES (?, ?, ?, ?, ?, ?, ?)",
              [council_reference, address, description, document_description, date_received, on_notice_to, date_scraped])
 
   logger.info("Data for #{council_reference} saved to database.")
