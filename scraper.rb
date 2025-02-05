@@ -67,6 +67,8 @@ doc.css('#list tbody tr').each do |row|
   on_notice_to = row.css('td')[3].text.strip
   description = row.css('td')[4].text.strip
 
+  date_scraped = Date.today.to_s
+
   # Format the date to ISO 8601
   begin
     date_received = Date.strptime(date_received, '%d %b %Y').strftime('%Y-%m-%d')
