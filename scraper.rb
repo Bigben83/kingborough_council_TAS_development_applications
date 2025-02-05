@@ -86,6 +86,7 @@ doc.css('#list tbody tr').each do |row|
     else
       logger.info("Duplicate entry for application #{council_reference} found. Skipping insertion.")
     end
+end
 
 # Finish
 logger.info("Data has been successfully inserted into the database.")
